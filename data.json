@@ -1,10 +1,10 @@
-[
+var data = [
 	{
 		"id"	: "array",
 		"name"	: "Array",
 		"memory": "contiguous",
-		"ops"	: { "search":N, "append":1, "insert":n, "remove":n },
-		"aka"	: [ "static array" ],
+		"ops"	: { "search":"n", "append":"1", "insert":"n", "delete":"n" },
+		"aka"	: [ "static array", "linear array", "one-dimensional array" ],
 		"lang"	: {
 			".NET"	: "[]",
 			"C++"	: "[]",
@@ -17,11 +17,11 @@
 		"id"	: "dynamic array",
 		"name"	: "Dynamic Array",
 		"memory": "contiguous",
-		"ops"	: { "search":N, "append":1, "insert":n, "remove":n },
+		"ops"	: { "search":"n", "append":"1", "insert":"n", "delete":"n" },
 		"aka"	: [ "array list", "growable array", "resizable array" ],
 		"lang"	: {
 			".NET"	: "List<>",
-			"C++"	: "std::vector<>",
+			"C++"	: "vector<>",
 			"Java"	: "ArrayList<>",
 			"Python": "list"
 		}
@@ -31,20 +31,19 @@
 		"id"	: "linkedlist",
 		"name"	: "Linked List",
 		"memory": "linked",
-		"ops"	: { "search":N, "append":1, "insert":n, "remove":n },
+		"ops"	: { "search":"n", "append":"1", "insert":"n", "delete":"n" },
 		"lang"	: {
 			".NET"	: "LinkedList<>",
-			"C++"	: "std::list<>",
+			"C++"	: "list<>",
 			"Java"	: "LinkedList<>"
 		}
 	},
 	
 	{
 		"id"	: "hashtable",
-		"name"	: "Hashtable",
-		"memory": "contiguous",
+		"name"	: "Hash Table",
 		"aka"	: [ "hash map", "dictionary" ],
-		"ops"	: { "search":1, "insert":1, "remove":1 },
+		"ops"	: { "search":"1", "insert":"1", "delete":"1" },
 		"lang"	: {
 			".NET"	: "Dictionary<>",
 			"C++"	: "unordered_map<>",
@@ -56,12 +55,12 @@
 	{
 		"id"	: "queue",
 		"name"	: "Queue",
-		"memory": "contiguous",
-		"ops"	: { "peek":1, "enqueue":1, "dequeue":1 },
-		"adt"	: [ "linkedlist", "array", "dynamicarray" ]
+		"ops"	: { "search":"n", "insert":"1", "delete":"1" },
+		"adt"	: [ "linked list", "array" ],
+		"aka"	: [ "FIFO" ],
 		"lang"	: {
 			".NET"	: "Queue<>",
-			"C++"	: "std::queue<>",
+			"C++"	: "queue<>",
 			"Java"	: "LinkedList<>",
 			"Python": "list"
 		}
@@ -70,23 +69,23 @@
 	{
 		"id"	: "stack",
 		"name"	: "Stack",
-		"memory": "contiguous",
-		"ops"	: { "peek":1, "push":1, "pop":1 },
-		"adt"	: [ "linkedlist", "array", "dynamicarray" ]
+		"ops"	: { "search":"n", "insert":"1", "delete":"1" },
+		"adt"	: [ "linked list", "array" ],
+		"aka"	: [ "LIFO" ],
 		"lang"	: {
 			".NET"	: "Stack<>",
-			"C++"	: "std::stack<>",
+			"C++"	: "stack<>",
 			"Java"	: "Stack<>",
 			"Python": "list"
 		}
-	},
-
+	}
+/*
 	{
 		"id"	: "binarysearchtree",
 		"name"	: "Binary Search Tree",
-		"memory": "linked",
-		"ops"	: { "search":log_2 N, "add":log_2 N, "remove":log_2 N },
+		"ops"	: { "search":"log_2 N", "add":"log_2 N", "delete":"log_2 N" },
 		"lang"	: {
 		}
 	}
+*/
 ]
