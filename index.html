@@ -1,87 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>List of Data Structures</title>
-	<meta name="description" content="">
-	<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-	<script src="https://unpkg.com/alpinejs" defer></script>
-	<script src="./data.json"></script>
-	<script>
-		var o_great_class = "o_great"
-		var o_good_class = "o_good"
-		var o_great_class = "o_ok"
-		var o_great_class = "o_bad"
-		var o_great_class = "o_terrible"
-		var o_class = {
-			"1":"o_great",
-			"logN":"o_good",
-			"n":"o_ok",
-			"nlogn":"o_bad",
-			"n^2":"o_terrible",
-			"2^n":"o_terrible",
-			"n!":"o_terrible"
-		}
-	</script>
-	<style>
-		body { font-size:0.8rem; grid-template-columns:1fr min(55rem, 90%) 1fr; }
-		body > header { padding-bottom:0.5rem; }
-		h1 { font-size:1.5rem; }
-		.nowrap { white-space:nowrap; }
-		.o { padding:.2rem; color:#000; }
-		.o_great { background:#2ECC40; }
-		.o_good { background:#3D9970; }
-		.o_ok { background:#FFDC00; }
-		.o_bad { background:#FF851B; }
-		.o_terrible { background:#FF4136; }
-	</style>
+    <title>List of Data Structures</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="./data.json"></script>
+    <script>
+        var o_great_class = "o_great"
+        var o_good_class = "o_good"
+        var o_great_class = "o_ok"
+        var o_great_class = "o_bad"
+        var o_great_class = "o_terrible"
+        var o_class = {
+            "1":"o_great",
+            "logN":"o_good",
+            "n":"o_ok",
+            "nlogn":"o_bad",
+            "n^2":"o_terrible",
+            "2^n":"o_terrible",
+            "n!":"o_terrible"
+        }
+    </script>
+    <style>
+        body { font-size:0.8rem; grid-template-columns:1fr min(55rem, 90%) 1fr; }
+        body > header { padding-bottom:0.5rem; }
+        h1 { font-size:1.5rem; }
+        .nowrap { white-space:nowrap; }
+        .o { padding:.2rem; color:#000; }
+        .o_great { background:#2ECC40; }
+        .o_good { background:#3D9970; }
+        .o_ok { background:#FFDC00; }
+        .o_bad { background:#FF851B; }
+        .o_terrible { background:#FF4136; }
+    </style>
 </head>
 <body>
 <noscript>The content of this page is rendered via JavaScript.</noscript>
 
 <header>
-	<h1>List of Data Structures</h1>
+    <h1>List of Data Structures</h1>
 </header>
 
 <main>
 <table>
 <!--<caption>List of Data Structures</caption>-->
 <thead>
-	<tr>
-		<th></th>
-		<th colspan="3"><a href="https://en.wikipedia.org/wiki/Time_complexity">Time Complexity</a></th>
-		<th colspan="4">Language / Framework</th>
-		<th></th>
-		<th></th>
-	</tr>
-	<tr>
-		<th></th>
-		<th>Search</th>
-		<th>Insert</th>
-		<th>Delete</th>
-		<th>.NET</th>
-		<th>Python</th>
-		<th>Java</th>
-		<th>C++</th>
-		<th>Also Known As</th>
-		<th class="nowrap">Is <a href="https://en.wikipedia.org/wiki/Abstract_data_type"><abbr title="Abstract Data Type">ADT</abbr><></a></th>
-	</tr>
+    <tr>
+        <th></th>
+        <th colspan="3"><a href="https://en.wikipedia.org/wiki/Time_complexity">Time Complexity</a></th>
+        <th colspan="4">Language / Framework</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th>Search</th>
+        <th>Insert</th>
+        <th>Delete</th>
+        <th>.NET</th>
+        <th>Python</th>
+        <th>Java</th>
+        <th>C++</th>
+        <th>Also Known As</th>
+        <th class="nowrap">Is <a href="https://en.wikipedia.org/wiki/Abstract_data_type"><abbr title="Abstract Data Type">ADT</abbr><></a></th>
+    </tr>
 </thead>
 <tbody>
 <template x-data="data" x-for="ds in data">
-	<tr>
-		<th x-text="ds.name" class="nowrap" scope="row"></th>
-		<td><code x-text="`O(${ds.ops?.['search']})`" x-bind:class="o_class[ds.ops?.['search']]" class="o"></code></td>
-		<td><code x-text="`O(${ds.ops?.['insert']})`" x-bind:class="o_class[ds.ops?.['insert']]" class="o"></code></td>
-		<td><code x-text="`O(${ds.ops?.['delete']})`" x-bind:class="o_class[ds.ops?.['delete']]" class="o"></code></td>
-		<td><code x-text="ds.lang?.['.NET']"></code></td>
-		<td><code x-text="ds.lang?.['Python']"></code></td>
-		<td><code x-text="ds.lang?.['Java']"></code></td>
-		<td><code x-text="ds.lang?.['C++']"></code></td>
-		<td x-text="ds.aka?.join(', ')"></td>
-		<td><template x-if="ds.adt"><span>Yes</span></template></td>
-	</tr>
+    <tr>
+        <th x-text="ds.name" class="nowrap" scope="row"></th>
+        <td><code x-text="`O(${ds.ops?.['search']})`" x-bind:class="o_class[ds.ops?.['search']]" class="o"></code></td>
+        <td><code x-text="`O(${ds.ops?.['insert']})`" x-bind:class="o_class[ds.ops?.['insert']]" class="o"></code></td>
+        <td><code x-text="`O(${ds.ops?.['delete']})`" x-bind:class="o_class[ds.ops?.['delete']]" class="o"></code></td>
+        <td><code x-text="ds.lang?.['.NET']"></code></td>
+        <td><code x-text="ds.lang?.['Python']"></code></td>
+        <td><code x-text="ds.lang?.['Java']"></code></td>
+        <td><code x-text="ds.lang?.['C++']"></code></td>
+        <td x-text="ds.aka?.join(', ')"></td>
+        <td><template x-if="ds.adt"><span>Yes</span></template></td>
+    </tr>
 </template>
 </tbody>
 </table>
@@ -89,9 +89,8 @@
 </main>
 
 <footer>
-	<p>Made with <a href="https://alpinejs.dev">Alpine.js</a>, <a href="https://simplecss.org">Simple.css</a>, <a href="https://clrs.cc">clrs.cc</a>, <a href="https://github.com/denniskovshov/data-structures">GitHub</a></p>
-	<p>Inspired by <a href="https://www.bigocheatsheet.com">Big-O Cheat Sheet</a></p>
-	<p>💙💛</p>
+    <p>Made with <a href="https://alpinejs.dev">Alpine.js</a>, <a href="https://simplecss.org">Simple.css</a>, <a href="https://clrs.cc">clrs.cc</a>, <a href="https://github.com/denniskovshov/data-structures">GitHub</a></p>
+    <p>💙💛</p>
 </footer>
 
 </body>
