@@ -79,5 +79,18 @@ var data = [
             "Java"  : "Stack<>",
             "Python": "deque"
         }
+    },
+    
+    {
+        "id"    : "binaryheap",
+        "name"  : "Binary Heap",
+        "ops"   : { "search":"🤔", "insert":"log2(n)", "delete":"log2(n)" },
+        "aka"   : [ "Heap", "Priority Queue" ],
+        "lang"  : {
+            ".NET"  : "PriorityQueue<>",
+            "C++"   : "make_heap",
+            "Java"  : "PriorityQueue<>",
+            "Python": "heapq"
+        }
     }
 ]
