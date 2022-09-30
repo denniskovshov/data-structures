@@ -8,34 +8,31 @@
     <meta name="google-site-verification" content="xy-eDGaZHqN_xMmsYzzSfUuqkoLiRNKV18Gp4IsAr8E" />
     <link rel="stylesheet" href="https://unpkg.com/simpledotcss/simple.min.css">
     <script src="https://unpkg.com/alpinejs" defer></script>
-    <script src="./data.json"></script>
+    <script src="./data.js"></script>
     <script>
-        var o_great_class = "o_great"
-        var o_good_class = "o_good"
-        var o_great_class = "o_ok"
-        var o_great_class = "o_bad"
-        var o_great_class = "o_terrible"
-        var o_class = {
-            "1":"o_great",
-            "log2(n)":"o_good",
-            "n":"o_ok",
-            "n*log2(n)":"o_bad",
-            "n^2":"o_terrible",
-            "2^n":"o_terrible",
-            "n!":"o_terrible"
-        }
+        let bigOToClassMap = {
+            "1"         :"bigo_great",
+            "log2(n)"   :"bigo_good",
+            "n"         :"bigo_ok",
+            "n*log2(n)" :"bigo_bad",
+            "n^2"       :"bigo_terrible",
+            "2^n"       :"bigo_terrible",
+            "n!"        :"bigo_terrible"
+        };
+
+        let noteCount = 1;
     </script>
     <style>
         body { font-size:0.8rem; grid-template-columns:1fr min(65rem, 95%) 1fr; }
         body > header { padding-bottom:0.5rem; }
         h1 { font-size:1.5rem; }
         .nowrap { white-space:nowrap; }
-        .o { padding:.2rem; color:#000; }
-        .o_great { background:#2ECC40; }
-        .o_good { background:#3D9970; }
-        .o_ok { background:#FFDC00; }
-        .o_bad { background:#FF851B; }
-        .o_terrible { background:#FF4136; }
+        .bigo { padding:.2rem; color:#000; }
+        .bigo_great { background:#2ECC40; }
+        .bigo_good { background:#3D9970; }
+        .bigo_ok { background:#FFDC00; }
+        .bigo_bad { background:#FF851B; }
+        .bigo_terrible { background:#FF4136; }
     </style>
 </head>
 <body>
@@ -45,14 +42,16 @@
     <h1>List of Data Structures</h1>
 </header>
 
-<main>
+<main x-data="data">
+<p>Work in progress...</p>
 <table>
 <!--<caption>List of Data Structures</caption>-->
 <thead>
     <tr>
         <th></th>
-        <th colspan="3"><a href="https://en.wikipedia.org/wiki/Time_complexity">Time Complexity</a></th>
+        <th colspan="3"><a href="https://en.wikipedia.org/wiki/Analysis_of_algorithms">Run time worst case</a></th>
         <th colspan="4">Language / Framework</th>
+        <th></th>
         <th></th>
         <th></th>
     </tr>
@@ -65,28 +64,53 @@
         <th>Python</th>
         <th>Java</th>
         <th>C++</th>
+        <th>Go</th>
         <th>Also Known As</th>
-        <th class="nowrap">Is <a href="https://en.wikipedia.org/wiki/Abstract_data_type"><abbr title="Abstract Data Type">ADT</abbr><></a></th>
+        <th class="nowrap">Is <a href="https://en.wikipedia.org/wiki/Abstract_data_type"><abbr title="Abstract Data Type">ADT</abbr></a></th>
     </tr>
 </thead>
 <tbody>
-<template x-data="data" x-for="ds in data">
+<template x-for="struct in data">
     <tr>
-        <th x-text="ds.name" class="nowrap" scope="row"></th>
-        <td><code x-text="`O(${ds.ops?.['search']})`" x-bind:class="o_class[ds.ops?.['search']]" class="o"></code></td>
-        <td><code x-text="`O(${ds.ops?.['insert']})`" x-bind:class="o_class[ds.ops?.['insert']]" class="o"></code></td>
-        <td><code x-text="`O(${ds.ops?.['delete']})`" x-bind:class="o_class[ds.ops?.['delete']]" class="o"></code></td>
-        <td><code x-text="ds.lang?.['.NET']"></code></td>
-        <td><code x-text="ds.lang?.['Python']"></code></td>
-        <td><code x-text="ds.lang?.['Java']"></code></td>
-        <td><code x-text="ds.lang?.['C++']"></code></td>
-        <td x-text="ds.aka?.join(', ')"></td>
-        <td><template x-if="ds.adt"><span>Yes</span></template></td>
+        <th x-text="struct.name" class="nowrap" scope="row"></th>
+        <td class="nowrap">
+            <code x-text="struct.ops.find(i => i.name == 'search').bigo" x-bind:class="bigOToClassMap[struct.ops.find(i => i.name == 'search').bigo]" class="bigo"></code>
+            <template x-if="struct.ops.find(i => i.name == 'search').note">
+                <sup x-text="noteCount++"></sup>
+            </template>
+        </td>
+        <td class="nowrap">
+            <code x-text="struct.ops.find(i => i.name == 'insert').bigo" x-bind:class="bigOToClassMap[struct.ops.find(i => i.name == 'insert').bigo]" class="bigo"></code>
+            <template x-if="struct.ops.find(i => i.name == 'insert').note">
+                <sup x-text="noteCount++"></sup>
+            </template>
+        </td>
+        <td class="nowrap">
+            <code x-text="struct.ops.find(i => i.name == 'delete').bigo" x-bind:class="bigOToClassMap[struct.ops.find(i => i.name == 'delete').bigo]" class="bigo"></code>
+            <template x-if="struct.ops.find(i => i.name == 'delete').note">
+                <sup x-text="noteCount++"></sup>
+            </template>
+        </td>
+        <td><code x-text="struct.lang?.['.NET']"></code></td>
+        <td><code x-text="struct.lang?.['Python']"></code></td>
+        <td><code x-text="struct.lang?.['Java']"></code></td>
+        <td><code x-text="struct.lang?.['C++']"></code></td>
+        <td><code x-text="struct.lang?.['Go']"></code></td>
+        <td x-text="struct.aka?.join(', ')"></td>
+        <td><template x-if="struct.adt"><span>Yes</span></template></td>
     </tr>
 </template>
 </tbody>
 </table>
-<p>To be expanded...</p>
+
+<small>
+<ol>
+<template x-for="op in data.flatMap(i => i.ops).filter(i => i.name != 'append' && i.note)">
+    <li x-text="op.note"></li>
+</template>
+</ol>
+</small>
+
 </main>
 
 <footer>
